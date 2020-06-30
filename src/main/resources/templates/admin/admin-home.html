@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout-admin :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click"
+      data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
+<nav th:replace="/moon/web/admin/nav :: nav"></nav>
+<nav th:replace="/moon/web/admin/menu :: menu"></nav>
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-wrapper-before"></div>
+        <div class="content-header row">
+            <div class="content-header-left col-md-4 col-12 mb-2">
+                <h3 class="content-header-title">Tables</h3>
+            </div>
+            <div class="content-header-right col-md-8 col-12">
+                <div class="breadcrumbs-top float-md-right">
+                    <div class="breadcrumb-wrapper mr-1">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active">Tables
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Table head options</h4>
+                        <br>
+                        <div class="form-actions center" >
+                            <a th:href="@{/addProduct}"  class="btn btn-outline-primary">Add Product</a>
+                        </div>
+                    </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Images</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="products : ${listProducts}">
+                                    <td th:text="${products.id}">Id</td>
+                                    <td>
+                                        <img th:src="@{'/images/'+${products.imageUrl}}" width="70" height="70">
+                                    </td>
+                                    <td th:text="${products.name}">Name</td>
+                                    <td th:text="${#numbers.formatCurrency(products.price)}"></td>
+                                    <td th:text="${products.description}">Name</td>
+                                    <td>
+                                        <a th:href="@{'/editProduct/'+${products.id}}"><i class="ft-rotate-cw"></i></a>
+                                        <a th:href="@{'/deleteProduct/'+${products.id}}"><i class="ft-x" style="color: black;"></i></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="/moon/web/admin/footer :: footer"></footer>
+<div th:replace="/layout/layout-admin :: script"></div>
+
+</body>
+</html>

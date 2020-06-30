@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/layout-web :: head">
+    <meta charset="UTF-8">
+    <title>Fashion</title>
+
+</head>
+<body>
+<!-- Header -->
+<header th:replace="/moon/web/header :: header"></header>
+
+<!-- banner area start -->
+<div class="banner-area">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <div class="single-banner">
+                <a th:href="@{/}"><img th:src="@{/web/img/banner/1.jpg}" alt=""></a>
+                <div class="banner-content banner-content-style1">
+                    <h2>BLUE <br> <span>Glasses</span></h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="single-banner">
+                <a href="#"><img th:src="@{/web/img/banner/2.jpg}" alt=""></a>
+                <div class="banner-content banner-content-style2">
+                    <span>-  Up to  -</span>
+                    <h2>30% off</h2>
+                    <p>Black Friday Discount</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="single-banner">
+                <a href="#"><img th:src="@{/web/img/banner/3.jpg}" alt=""></a>
+                <div class="banner-content banner-content-style3">
+                    <h2>Trand <br>2018.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- banner area two end -->
+<!-- all products area start -->
+<div class="all-products-area pt-115 pb-50">
+    <div class="pl-100 pr-100">
+        <div class="container-fluid">
+            <div class="section-title text-center mb-60">
+                <h2>All Products</h2>
+            </div>
+            <div class="product-style">
+                <div class="product-tab-list text-center mb-95 nav product-menu-mrg" role="tablist">
+                    <a class="active" href="#home1" data-toggle="tab" role="tab" aria-selected="true"
+                       aria-controls="home1">
+                        <h4>all </h4>
+                    </a>
+                    <a href="#home2" data-toggle="tab" role="tab" aria-selected="false" aria-controls="home2">
+                        <h4>woman </h4>
+                    </a>
+                    <a href="#home3" data-toggle="tab" role="tab" aria-selected="false" aria-controls="home3">
+                        <h4>man</h4>
+                    </a>
+                    <a href="#home4" data-toggle="tab" role="tab" aria-selected="false" aria-controls="home4">
+                        <h4>ACCESSORIES</h4>
+                    </a>
+                    <a href="#home5" data-toggle="tab" role="tab" aria-selected="false" aria-controls="home5">
+                        <h4>kids</h4>
+                    </a>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active show fade" id="home1" role="tabpanel">
+                        <div class="custom-row">
+                                <div class="custom-col-5 custom-col-style mb-65" th:each="products : ${listProducts}">
+                                    <div class="product-wrapper">
+                                        <div class="product-img">
+                                            <a th:href="@{/product-detail{id}(id=${products.id})}">
+                                                <img th:src="@{'/images/'+${products.imageUrl}}" alt="">
+                                            </a>
+                                            <span>hot</span>
+                                            <div class="product-action">
+                                                <a class="animate-left" title="Wishlist" href="#">
+                                                    <i class="pe-7s-like"></i>
+                                                </a>
+                                                <a class="animate-top" title="Add To Cart"
+                                                   th:href="@{'/cart/'+${products.id}}">
+                                                    <i class="pe-7s-cart"></i>
+                                                </a>
+                                                <a class="animate-right" title="Quick View" data-toggle="modal"
+                                                   data-target="#exampleModal" href="">
+                                                    <i class="pe-7s-look"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <h4><a href="product-details.html"
+                                                   th:href="@{product-detail{id}(id=${products.id})}"
+                                                   th:text="${products.name}">Black Faux
+                                                Suede</a></h4>
+                                         <span th:text="${#numbers.formatCurrency(products.price)}">$115.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- all products area end -->
+<!-- brand logo area start -->
+<div class="brand-logo-area pl-100 pr-100">
+    <div class="ptb-135 gray-bg">
+        <div class="brand-logo-active owl-carousel">
+            <div class="single-brand">
+                <img th:src="@{/web/img/brand_logo/1.png}" alt="">
+            </div>
+            <div class="single-brand">
+                <img th:src="@{/web/img/brand_logo/2.png}" alt="">
+            </div>
+            <div class="single-brand">
+                <img th:src="@{/web/img/brand_logo/3.png}" alt="">
+            </div>
+            <div class="single-brand">
+                <img th:src="@{/web/img/brand_logo/4.png}" alt="">
+            </div>
+            <div class="single-brand">
+                <img th:src="@{/web/img/brand_logo/5.png}" alt="">
+            </div>
+            <div class="single-brand">
+                <img th:src="@{/web/img/brand_logo/6.png}" alt="">
+            </div>
+            <div class="single-brand">
+                <img th:src="@{/web/img/brand_logo/2.png}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- brand logo area end -->
+<!-- banner3 area start -->
+<div class="banner-area3 pt-120 pb-115">
+    <div class="pl-100 pr-100">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-md-12 col-lg-4 col-xl-4">
+                    <div class="banner-wrapper mrgn-negative">
+                        <a href="#"><img th:src="@{web/img/banner/8.jpg}" alt=""></a>
+                        <div class="banner-wrapper2-content">
+                            <h3>Speatial </h3>
+                            <h2>Style</h2>
+                            <span>Start from $299.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-8 col-xl-8">
+                    <div class="row no-gutters banner-mrg">
+                        <div class="col-md-6">
+                            <div class="banner-wrapper mrgn-b-5 mrgn-r-5 ">
+                                <img th:src="@{web/img/banner/9.jpg}" alt="">
+                                <div class="banner-wrapper3-content">
+                                    <a href="#">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="banner-wrapper mrgn-b-5">
+                                <img th:src="@{web/img/banner/10.jpg}" alt="">
+                                <div class="banner-wrapper3-content banner-text-color">
+                                    <a href="#">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="banner-wrapper mrgn-r-5">
+                                <img th:src="@{/web/img/banner/111.jpg}" alt="">
+                                <div class="banner-wrapper3-content">
+                                    <a href="#">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="banner-wrapper">
+                                <img th:src="@{/web/img/banner/122.jpg}" alt="">
+                                <div class="banner-wrapper3-content">
+                                    <a href="#">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- banner3 area end -->
+<!-- insta feed start -->
+<div class="insta-feed ptb-120  gray-bg">
+    <div class="pl-185 pr-185">
+        <div class="section-title-2 text-center mb-50">
+            <h2>Insta Feed</h2>
+            <h4>Follow us on intagram. <span>@Ezonepro</span></h4>
+        </div>
+        <div class="instafeed-wrapper">
+            <div class="instafeed-active owl-carousel">
+                <div class="instafeed-img">
+                    <img th:src="@{/web/img/instra/1.jpg}" alt="">
+                </div>
+                <div class="instafeed-img">
+                    <img th:src="@{/web/img/instra/2.jpg}" alt="">
+                </div>
+                <div class="instafeed-img">
+                    <img th:src="@{/web/img/instra/3.jpg}" alt="">
+                </div>
+                <div class="instafeed-img">
+                    <img th:src="@{/web/img/instra/4.jpg}" alt="">
+                </div>
+                <div class="instafeed-img">
+                    <img th:src="@{/web/img/instra/5.jpg}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span class="pe-7s-close" aria-hidden="true"></span>
+    </button>
+    <div class="modal-dialog modal-quickview-width" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="qwick-view-left">
+                    <div class="quick-view-learg-img">
+                        <div class="quick-view-tab-content tab-content">
+                            <div class="tab-pane active show fade" id="modal1" role="tabpanel">
+                                <img src="assets/img/quick-view/l1.jpg" alt="">
+                            </div>
+                            <div class="tab-pane fade" id="modal2" role="tabpanel">
+                                <img src="assets/img/quick-view/l2.jpg" alt="">
+                            </div>
+                            <div class="tab-pane fade" id="modal3" role="tabpanel">
+                                <img src="assets/img/quick-view/l3.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quick-view-list nav" role="tablist">
+                        <a class="active" href="#modal1" data-toggle="tab" role="tab" aria-selected="true"
+                           aria-controls="home1">
+                            <img src="assets/img/quick-view/s1.jpg" alt="">
+                        </a>
+                        <a href="#modal2" data-toggle="tab" role="tab" aria-selected="false" aria-controls="home2">
+                            <img src="assets/img/quick-view/s2.jpg" alt="">
+                        </a>
+                        <a href="#modal3" data-toggle="tab" role="tab" aria-selected="false" aria-controls="home3">
+                            <img src="assets/img/quick-view/s3.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="qwick-view-right">
+                    <div class="qwick-view-content">
+                        <h3>Handcrafted Supper Mug</h3>
+
+                        <div class="price">
+                            <span class="new">$90.00</span>
+                            <span class="old">$120.00  </span>
+                        </div>
+                        <div class="rating-number">
+                            <div class="quick-view-rating">
+                                <i class="pe-7s-star"></i>
+                                <i class="pe-7s-star"></i>
+                                <i class="pe-7s-star"></i>
+                                <i class="pe-7s-star"></i>
+                                <i class="pe-7s-star"></i>
+                            </div>
+                            <div class="quick-view-number">
+                                <span>2 Ratting (S)</span>
+                            </div>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do tempor incididun ut labore et
+                            dolore magna aliqua. Ut enim ad mi , quis nostrud veniam exercitation .</p>
+                        <div class="quick-view-select">
+                            <div class="select-option-part">
+                                <label>Size*</label>
+                                <select class="select">
+                                    <option value="">- Please Select -</option>
+                                    <option value="">900</option>
+                                    <option value="">700</option>
+                                </select>
+                            </div>
+                            <div class="select-option-part">
+                                <label>Color*</label>
+                                <select class="select">
+                                    <option value="">- Please Select -</option>
+                                    <option value="">orange</option>
+                                    <option value="">pink</option>
+                                    <option value="">yellow</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cart-plus-minus">
+                            <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                        </div>
+                        <div class="quickview-btn-cart">
+                            <a class="btn-hover-black" href="#">add to cart</a>
+                        </div>
+                        <div class="quickview-btn-wishlist">
+                            <a class="btn-hover" href="#"><i class="pe-7s-like"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="/moon/web/footer :: footer"></footer>
+<div th:replace="/layout/layout-web :: script"></div>
+
+</body>
+</html>
